@@ -1,6 +1,9 @@
 package com.example.martin.github;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -46,6 +49,12 @@ public class Main2Activity extends AppCompatActivity {
         Intent intent=new Intent( getApplicationContext(),MainActivity.class );
         intent.putExtra( DATA_SEND_KEY,search );
         startActivity( intent );
+      gitopenhelper openhelper=gitopenhelper.getInstance( Main2Activity.this );
+        SQLiteDatabase database=openhelper.getWritableDatabase();
+        ContentValues values=new ContentValues(  );
+        values.put( contractclass.git.COLUMN_NAME,search );
+        database.insert( contractclass.git.TABLE_NAME,null,values );
+       searchtext.setText( "" );
     }
 
     @Override
@@ -56,6 +65,9 @@ getMenuInflater().inflate( R.menu.main_menu,menu );
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        Intent intent=new Intent( getApplicationContext(),historyactivity.class );
+        startActivity( intent );
         return super.onOptionsItemSelected( item );
     }
 }

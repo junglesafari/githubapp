@@ -23,7 +23,10 @@
         <activity android:name=".reposactivity" />
         <activity android:name=".webviewforrepo" />
         <activity android:name=".followers" />
-        <activity android:name=".lol"></activity>
+        <activity android:name=".lol" />
+        <activity android:name=".historyactivity">
+
+        </activity>
     </application>
 
 </manifest>

@@ -5,14 +5,24 @@ import javax.xml.transform.sax.SAXResult;
 public class pojoclassforrepo {
     String id;
     String name;
-    String full_name;
+    private String full_name;
     String html_url;
-    String created_at;
-    String updated_at;
-    String pushed_at;
-    String git_url;
+    private String created_at;
+    private String updated_at;
+    private String pushed_at;
+    private String git_url;
 
-    public pojoclassforrepo(String id, String name, String full_name, String html_url, String created_at, String updated_at, String pushed_at, String git_url, String watchers_count, String language) {
+    public String getAvatar_url() {
+        return avatar_url;
+    }
+
+    public void setAvatar_url(String avatar_url) {
+        this.avatar_url = avatar_url;
+    }
+
+    private String avatar_url;
+
+    public pojoclassforrepo(String id, String name, String full_name, String html_url, String created_at, String updated_at, String pushed_at, String git_url, String watchers_count, String language,String avatar_url) {
         this.id = id;
         this.name = name;
         this.full_name = full_name;
@@ -23,6 +33,7 @@ public class pojoclassforrepo {
         this.git_url = git_url;
         this.watchers_count = watchers_count;
         this.language = language;
+        this.avatar_url= avatar_url;
     }
 
     String watchers_count;

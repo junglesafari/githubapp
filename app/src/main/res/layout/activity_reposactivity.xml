@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".reposactivity">
-<ListView
+<android.support.v7.widget.RecyclerView
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:id="@+id/listview"
+    android:id="@+id/recyclerview"
     android:visibility="gone">
-</ListView>
+</android.support.v7.widget.RecyclerView>
     <ProgressBar
         android:id="@+id/progressbar3"
         android:visibility="visible"

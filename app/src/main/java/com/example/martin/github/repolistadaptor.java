@@ -40,15 +40,15 @@ LayoutInflater inflater;
           TextView pusheddate=output.findViewById( R.id.textView13 );
           TextView watcherscount=output.findViewById( R.id.textView15 );
           TextView language=output.findViewById( R.id.textView17 );
-        repoviewholder viewholader=new repoviewholder();
-        viewholader.repository=repository;
-        viewholader.repourl=repourl;
-        viewholader.creationdate=creationdate;
-        viewholader.updationdate=updationdate;
-        viewholader.language=language;
-        viewholader.pusheddate=pusheddate;
-        viewholader.watcherscount=watcherscount;
-        output.setTag( viewholader );
+       // repoviewholder viewholader=new repoviewholder();
+//        viewholader.repository=repository;
+//        viewholader.repourl=repourl;
+//        viewholader.creationdate=creationdate;
+//        viewholader.updationdate=updationdate;
+//        viewholader.language=language;
+//        viewholader.pusheddate=pusheddate;
+//        viewholader.watcherscount=watcherscount;
+//        output.setTag( viewholader );
 
         }
    repoviewholder viewholader=(repoviewholder) output.getTag();

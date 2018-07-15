@@ -53,6 +53,6 @@ public class followersrecycleradaptor extends RecyclerView.Adapter<viewholderfol
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return  this.arrayList.size();
     }
 }

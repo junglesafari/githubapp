@@ -23,7 +23,11 @@ public class gitopenhelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String gitsql = "CREATE TABLE " + contractclass.git.TABLE_NAME + " ( " + contractclass.git.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , " + contractclass.git.COLUMN_NAME + " TEXT ) ";
+        String gitsql = "CREATE TABLE " + contractclass.git.TABLE_NAME +
+                " ( " + contractclass.git.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT , "
+                + contractclass.git.COLUMN_NAME + " TEXT ,"
+                + contractclass.git.COLUMN_URL+" TEXT UNIQUE ) ";
+
         sqLiteDatabase.execSQL( gitsql );
     }
 

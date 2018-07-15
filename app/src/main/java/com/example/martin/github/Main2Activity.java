@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,11 @@ public class Main2Activity extends AppCompatActivity {
     EditText searchtext;
     ImageView gitimage;
     String search;
+    public  static final int IMAGE_REQUEST_CODE=1;
+    public  static final int IMAGE_RESULT_CODE=2;
     public static final String DATA_SEND_KEY = "jsondatasend";
+    public static final String IMAGE_URL_SEND_KEY="imagesend";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +54,8 @@ public class Main2Activity extends AppCompatActivity {
         Intent intent=new Intent( getApplicationContext(),MainActivity.class );
         intent.putExtra( DATA_SEND_KEY,search );
         startActivity( intent );
-      gitopenhelper openhelper=gitopenhelper.getInstance( Main2Activity.this );
-        SQLiteDatabase database=openhelper.getWritableDatabase();
-        ContentValues values=new ContentValues(  );
-        values.put( contractclass.git.COLUMN_NAME,search );
-        database.insert( contractclass.git.TABLE_NAME,null,values );
-       searchtext.setText( "" );
+        searchtext.setText( "" );
+
     }
 
     @Override
@@ -70,4 +71,28 @@ getMenuInflater().inflate( R.menu.main_menu,menu );
         startActivity( intent );
         return super.onOptionsItemSelected( item );
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//     if(requestCode==IMAGE_REQUEST_CODE){
+//         if(resultCode==IMAGE_RESULT_CODE){
+////             gitopenhelper openhelper=gitopenhelper.getInstance( Main2Activity.this );
+////             SQLiteDatabase database=openhelper.getWritableDatabase();
+////             ContentValues values=new ContentValues(  );
+////             values.put( contractclass.git.COLUMN_NAME,search );
+////             String url=data.getStringExtra(IMAGE_URL_SEND_KEY );
+////             Log.d( "Main2Activity",url );
+////             values.put( contractclass.git.COLUMN_URL,url );
+////             database.insert( contractclass.git.TABLE_NAME,null,values );
+////
+//
+//         }
+//     }
+//
+//
+//
+//
+//
+//        super.onActivityResult( requestCode, resultCode, data );
+//    }
 }

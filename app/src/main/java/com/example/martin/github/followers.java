@@ -54,12 +54,7 @@ public class followers extends AppCompatActivity {
             public void onResponse(Call<ArrayList<pojoclassforfollower>> call, Response<ArrayList<pojoclassforfollower>> response) {
                 datatoshow.clear();
                  datatoshow = response.body();
-
-//                for (int i = 0; i < followername.size(); i++) {
-//                    datatoshow.add( followername.get( i ).login );
-//                }
-                //ArrayAdapter adapter = new ArrayAdapter<>( followers.this, android.R.layout.simple_list_item_1, datatoshow );
-                followersrecycleradaptor adapter=new followersrecycleradaptor( followers.this, datatoshow, new repoclicklistener() {
+                 followersrecycleradaptor adapter=new followersrecycleradaptor( followers.this, datatoshow, new repoclicklistener() {
                     @Override
                     public void onRepoClick(View view, int position) {
                         Intent intent1=new Intent( followers.this,MainActivity.class );
@@ -67,14 +62,13 @@ public class followers extends AppCompatActivity {
                         startActivity( intent1 );
                     }
                 } );
-              //  listView.setAdapter( adapter );
                 LinearLayoutManager manager=new LinearLayoutManager( getApplicationContext(), LinearLayoutManager.VERTICAL,false);
                 recyclerView.addItemDecoration(new DividerItemDecoration(followers.this,DividerItemDecoration.VERTICAL));
                recyclerView.setLayoutManager( manager );
                 recyclerView.setAdapter( adapter );
                 progressBar.setVisibility( View.INVISIBLE );
                 recyclerView.setVisibility( View.VISIBLE );
-              //  listView.setVisibility( View.VISIBLE );
+
             }
 
             @Override
@@ -82,16 +76,6 @@ public class followers extends AppCompatActivity {
 
             }
         } );
-
-
-//        listView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                Intent intent1=new Intent( getApplicationContext(),MainActivity.class );
-//                intent1.putExtra( Main2Activity.DATA_SEND_KEY,datatoshow.get( i ) );
-//               startActivity( intent1 );
-//            }
-//        } );
 
 
     }

@@ -1,6 +1,8 @@
 package com.example.martin.github;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -96,13 +98,11 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue( new Callback<userinformationclass>() {
             @Override
             public void onResponse(Call<userinformationclass> call, Response<userinformationclass> response) {
-                //  Toast.makeText( Main2Activity.this,"something went wrong  "+search,Toast.LENGTH_SHORT ).show();
-                userinformationclass data = response.body();
+                  userinformationclass data = response.body();
                 Log.d( "mainactivity2", "data" + data );
                 Gson gson = new Gson();
                 String datatosend = gson.toJson( data );
                 Log.d( "mainactivity2", "string " + datatosend );
-
 
                 if (data != null) {
                     progressBar.setVisibility( View.GONE );
@@ -121,15 +121,14 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         mail.setText( "Private" );
                     }
-
-                } else {
+                    addhistroydatabasse( data.login,data.avatar_url );
+          } else {
                     Intent intent = new Intent( getApplicationContext(), pagenotfound.class );
                     startActivity( intent );
                     finish();
                     Log.d( "mainactivity2", "string 3 " + data );
 
                 }
-
 
             }
 
@@ -139,6 +138,15 @@ public class MainActivity extends AppCompatActivity {
             }
         } );
 
+
+    }
+    private void addhistroydatabasse(String loginname, URL avatarurl){
+        gitopenhelper openhelper=gitopenhelper.getInstance( MainActivity.this );
+        SQLiteDatabase database=openhelper.getWritableDatabase();
+        ContentValues values=new ContentValues(  );
+        values.put( contractclass.git.COLUMN_NAME,loginname );
+        values.put( contractclass.git.COLUMN_URL, String.valueOf( avatarurl ) );
+        database.insert( contractclass.git.TABLE_NAME,null,values );
 
     }
 }

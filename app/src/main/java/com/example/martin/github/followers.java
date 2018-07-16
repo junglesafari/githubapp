@@ -111,7 +111,7 @@ public class followers extends AppCompatActivity {
 
 
                 if(isscrolling&&(currentintem+scrolleditem)==totleitem){
-                    fetchdata(pagenumber++,search  );
+                    fetchdata(pagenumber+1,search  );
                 }
 
 
@@ -120,20 +120,20 @@ public class followers extends AppCompatActivity {
     }
 
     void fetchdata(final int pagenumber, String search){
-
+            final int pagenumber1=pagenumber;
         Retrofit.Builder builder = new Retrofit.Builder().baseUrl( "https://api.github.com/users/" ).addConverterFactory( GsonConverterFactory.create() );
 
         Retrofit retrofit = builder.build();
 
         followersinterface servise = retrofit.create( followersinterface.class );
-        String url=search+"/followers"+"?page="+pagenumber;
+        String url=search+"/followers"+"?page="+pagenumber1;
         Call<ArrayList<pojoclassforfollower>> call = servise.getfollowers( url );
 
         call.enqueue( new Callback<ArrayList<pojoclassforfollower>>() {
             @Override
             public void onResponse(Call<ArrayList<pojoclassforfollower>> call, Response<ArrayList<pojoclassforfollower>> response) {
-                if(pagenumber==1){datatoshow.clear();}
-                datatoshow = response.body();
+                if(pagenumber1==1){datatoshow.clear();}
+                datatoshow.addAll(  response.body()) ;
                 Log.d( "followers",datatoshow+"" );
                 if(datatoshow==null){
                     isscrolling=false;

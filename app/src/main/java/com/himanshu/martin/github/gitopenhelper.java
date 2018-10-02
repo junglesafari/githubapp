@@ -1,4 +1,4 @@
-package com.example.martin.github;
+package com.himanshu.martin.github;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

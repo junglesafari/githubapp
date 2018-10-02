@@ -1,4 +1,4 @@
-package com.example.martin.github;
+package com.himanshu.martin.github;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -49,45 +50,6 @@ public class followers extends AppCompatActivity {
         final String search = intent.getStringExtra( Main2Activity.DATA_SEND_KEY );
 
         fetchdata( pagenumber,search );
-
-//
-//        Retrofit.Builder builder = new Retrofit.Builder().baseUrl( "https://api.github.com/users/" ).addConverterFactory( GsonConverterFactory.create() );
-//
-//        Retrofit retrofit = builder.build();
-//
-//        followersinterface servise = retrofit.create( followersinterface.class );
-//
-//        Call<ArrayList<pojoclassforfollower>> call = servise.getfollowers( search );
-//
-//        call.enqueue( new Callback<ArrayList<pojoclassforfollower>>() {
-//            @Override
-//            public void onResponse(Call<ArrayList<pojoclassforfollower>> call, Response<ArrayList<pojoclassforfollower>> response) {
-//                datatoshow.clear();
-//                 datatoshow = response.body();
-//                  adapter=new followersrecycleradaptor( followers.this, datatoshow, new repoclicklistener() {
-//                    @Override
-//                    public void onRepoClick(View view, int position) {
-//                        Intent intent1=new Intent( followers.this,MainActivity.class );
-//                        intent1.putExtra( Main2Activity.DATA_SEND_KEY, datatoshow.get( position ).login );
-//                        startActivity( intent1 );
-//                    }
-//                } );
-//                  manager=new LinearLayoutManager( getApplicationContext(), LinearLayoutManager.VERTICAL,false);
-//                recyclerView.addItemDecoration(new DividerItemDecoration(followers.this,DividerItemDecoration.VERTICAL));
-//               recyclerView.setLayoutManager( manager );
-//                recyclerView.setAdapter( adapter );
-//                progressBar.setVisibility( View.INVISIBLE );
-//                recyclerView.setVisibility( View.VISIBLE );
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<ArrayList<pojoclassforfollower>> call, Throwable t) {
-//
-//            }
-//        } );
-
-
         recyclerView.addOnScrollListener( new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -112,6 +74,8 @@ public class followers extends AppCompatActivity {
 
                 if(isscrolling&&(currentintem+scrolleditem)==totleitem){
                     fetchdata(pagenumber+1,search  );
+                }else{
+                    Toast.makeText( followers.this,"else block ",Toast.LENGTH_SHORT ).show();
                 }
 
 
@@ -137,7 +101,6 @@ public class followers extends AppCompatActivity {
                 Log.d( "followers",datatoshow+"" );
                 if(datatoshow==null){
                     isscrolling=false;
-
                 }
                 adapter=new followersrecycleradaptor( followers.this, datatoshow, new repoclicklistener() {
                     @Override

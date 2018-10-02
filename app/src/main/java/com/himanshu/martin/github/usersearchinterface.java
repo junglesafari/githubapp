@@ -1,4 +1,4 @@
-package com.example.martin.github;
+package com.himanshu.martin.github;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

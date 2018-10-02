@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.martin.github">
+    package="com.himanshu.martin.github">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -24,9 +24,9 @@
         <activity android:name=".webviewforrepo" />
         <activity android:name=".followers" />
         <activity android:name=".lol" />
-        <activity android:name=".historyactivity">
-
-        </activity>
+        <activity android:name=".historyactivity" />
+        <activity android:name=".aboutusactivity" />
+        <activity android:name=".getdiscountactivity"></activity>
     </application>
 
 </manifest>

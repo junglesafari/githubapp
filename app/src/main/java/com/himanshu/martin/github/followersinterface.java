@@ -1,4 +1,4 @@
-package com.example.martin.github;
+package com.himanshu.martin.github;
 
 import java.util.ArrayList;
 
@@ -8,7 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Url;
 
-public interface followersinterface {
+public interface  followersinterface {
     @GET
     Call<ArrayList<pojoclassforfollower>> getfollowers(@Url String url);
 }

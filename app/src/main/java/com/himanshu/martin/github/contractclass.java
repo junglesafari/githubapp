@@ -1,4 +1,4 @@
-package com.example.martin.github;
+package com.himanshu.martin.github;
 
 public class contractclass {
    public static class git{

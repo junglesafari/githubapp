@@ -1,4 +1,4 @@
-package com.example.martin.github;
+package com.himanshu.martin.github;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -74,7 +74,7 @@ public class historyactivity extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
 
 
-                gitopenhelper gitopenhelper = com.example.martin.github.gitopenhelper.getInstance( getApplicationContext() );
+                gitopenhelper gitopenhelper = com.himanshu.martin.github.gitopenhelper.getInstance( getApplicationContext() );
                 SQLiteDatabase database1 = gitopenhelper.getWritableDatabase();
                 String[] selectargument = {arrayList.get( viewHolder.getAdapterPosition() ).getLogin()};
                 database1.delete( contractclass.git.TABLE_NAME, contractclass.git.COLUMN_NAME + " = ?", selectargument );
